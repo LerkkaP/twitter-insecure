@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+		
+    <title>Twitter</title>
+    {% load static %}
+  </head>
+  <body>
+		<main class="index">
+			<div class="index__container">
+				<div class="index__left-col">
+					<img src="static/images/twitter-icon.svg">
+				</div>
+				<div class="index__right-col">
+					<h1 class="index__heading-primary">It's happening in the world</h1>
+					<h2 class="index__heading-secondary">Join today.</h2>
+					<div class="index__buttons">
+						<button class="index__button index__button--filled">Create an account</button>
+						<button class="index__button index__button--outlined">Log in</button>
+					</div>
+				</div>
+			</div>
+		</main>
+  </body>
+</html>

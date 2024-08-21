@@ -1,10 +1,10 @@
 from django.urls import path
 from .routes.index_route import index
-from .routes.login_route import login
+from .routes.feed_route import feed
 
 urlpatterns = [
     path('', index, name='index'),
-    path('login/', login, name='login')
+    path('feed/', feed, name='feed')
 ]
 
 """urlpatterns = [
