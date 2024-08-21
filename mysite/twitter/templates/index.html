@@ -20,14 +20,43 @@
 					<img src="static/images/twitter-icon.svg">
 				</div>
 				<div class="index__right-col">
-					<h1 class="index__heading-primary">It's happening in the world</h1>
+					<h1 class="index__heading-primary">Happening now</h1>
 					<h2 class="index__heading-secondary">Join today.</h2>
 					<div class="index__buttons">
-						<button class="index__button index__button--filled">Create an account</button>
-						<button class="index__button index__button--outlined">Log in</button>
+						<button class="index__button index__button--filled" id="openSignup">Create an account</button>
+						<button class="index__button index__button--outlined" id="openLogin">Sign in</button>
 					</div>
 				</div>
 			</div>
 		</main>
+
+		<div class="modal" id="signupModal">
+			<div class="modal__content">
+				<img src="static/images/twitter-icon.svg" width="50px" height="50px">
+				<span class="close" id="closeSignup">&times;</span>
+				<h2>Create your account</h2>
+				<form>
+					<input type="text" placeholder="Username">
+					<input type="password" placeholder="Password">
+					<input type="password" placeholder="Confirm password">
+					<button type="submit">Sign Up</button>
+				</form>
+			</div>
+		</div>
+
+		<div class="modal" id="loginModal">
+			<div class="modal__content">
+				<img src="static/images/twitter-icon.svg" width="50px" height="50px">
+				<span class="close" id="closeLogin">&times;</span>
+				<h2>Sign in</h2>
+				<form>
+					<input type="text" placeholder="Username">
+					<input type="password" placeholder="Password">
+					<button type="submit">Sign in</button>
+				</form>
+			</div>
+		</div>
+
+		<script src="{% static 'js/modals.js' %}"></script>
   </body>
 </html>
