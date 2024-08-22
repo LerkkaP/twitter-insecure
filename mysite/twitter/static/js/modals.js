@@ -7,11 +7,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeLogin = document.getElementById('closeLogin');
   
     openSignup.addEventListener('click', function () {
-      signupModal.style.display = 'block';
+      signupModal.style.display = 'flex';
     });
   
     openLogin.addEventListener('click', function () {
-      loginModal.style.display = 'block';
+      loginModal.style.display = 'flex';
     });
   
     closeSignup.addEventListener('click', function () {
@@ -28,6 +28,18 @@ document.addEventListener('DOMContentLoaded', function () {
       } else if (event.target == loginModal) {
         loginModal.style.display = 'none';
       }
+    });
+
+    switchToSignup.addEventListener('click', function (event) { 
+      event.preventDefault();
+      loginModal.style.display = 'none';
+      signupModal.style.display = 'flex';
+    });
+
+    switchToSignIn.addEventListener('click', function (event) { 
+      event.preventDefault(); 
+      loginModal.style.display = 'flex';
+      signupModal.style.display = 'none';
     });
   });
   
