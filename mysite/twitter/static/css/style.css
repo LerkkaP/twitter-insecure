@@ -197,3 +197,15 @@ div.alert.error {
 div.modal__messages {
 	padding-bottom: 1rem;
 }
+
+
+/* HOME */
+
+.home {
+	max-width: 1280px;
+	margin: 0 auto;
+	height: 100vh; 
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
