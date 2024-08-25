@@ -12,54 +12,72 @@
 		<link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}" >
 
     <title>Twitter</title>
-    {% load static %}
   </head>
   <body>
-		<main class="index">
-			<div class="index__container">
-				<div class="index__left-col">
-					<img src="static/images/twitter-icon.svg">
-				</div>
-				<div class="index__right-col">
-					<h1 class="index__heading-primary">Happening now</h1>
-					<h2 class="index__heading-secondary">Join today.</h2>
-					<div class="index__buttons">
-						<button class="index__button index__button--filled" id="openSignup">Create an account</button>
-						<button class="index__button index__button--outlined" id="openLogin">Sign in</button>
-					</div>
-				</div>
-			</div>
-		</main>
+    <main class="index">
+      <div class="index__container">
+        <div class="index__left-col">
+          <img src="{% static 'images/twitter-icon.svg' %}" alt="Twitter Icon">
+        </div>
+        <div class="index__right-col">
+          <h1 class="index__heading-primary">Happening now</h1>
+          <h2 class="index__heading-secondary">Join today.</h2>
+          <div class="index__buttons">
+            <button class="index__button index__button--filled" id="openSignup">Create an account</button>
+            <button class="index__button index__button--outlined" id="openLogin">Sign in</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div class="modal" id="signupModal">
+      <div class="modal__content">
+        <span class="close" id="closeSignup">&times;</span>
+        <img src="{% static 'images/twitter-icon.svg' %}" width="50px" height="50px">
+        <h2>Create your account</h2>
+    
+        {% if messages %}
+        <div class="modal__messages">
+          {% for message in messages %}
+          <div class="{% if message.tags %}alert {{ message.tags }}{% endif %}">
+            {{ message }}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+    
+        <form method="POST" action="{% url 'register' %}">
+          {% csrf_token %}
+          <input type="text" name="username" placeholder="Username" value="{{ form_data.username|default:'' }}" required>
+          <input type="password" name="password1" placeholder="Password" value="{{ form_data.password1|default:'' }}" required>
+          <input type="password" name="password2" placeholder="Confirm password" value="{{ form_data.password2|default:'' }}" required>
+          <button type="submit">Sign Up</button>
+        </form>
+        <p class="modal__link">Already have an account? <a href="#" id="switchToSignIn">Sign in</a></p> 
+      </div>
+    </div>    
 
-		<div class="modal" id="signupModal">
-			<div class="modal__content">
-				<span class="close" id="closeSignup">&times;</span>
-				<img src="static/images/twitter-icon.svg" width="50px" height="50px">
-				<h2>Create your account</h2>
-				<form>
-					<input type="text" placeholder="Username">
-					<input type="password" placeholder="Password">
-					<input type="password" placeholder="Confirm password">
-					<button type="submit">Sign Up</button>
-				</form>
-				<p class="modal__link">Already have an account? <a href="#" id="switchToSignIn">Sign in</a></p> 
-			</div>
-		</div>
+    <div class="modal" id="loginModal">
+      <div class="modal__content">
+        <img src="{% static 'images/twitter-icon.svg' %}" width="50px" height="50px">
+        <span class="close" id="closeLogin">&times;</span>
+        <h2>Sign in</h2>
+        <form  method="POST">
+          <input type="text" placeholder="Username" name="username">
+          <input type="password" placeholder="Password">
+          <button type="submit">Sign in</button>
+        </form>
+        <p class="modal__link">Don't have an account? <a href="#" id="switchToSignup">Register</a></p> 
+      </div>
+    </div>
 
-		<div class="modal" id="loginModal">
-			<div class="modal__content">
-				<img src="static/images/twitter-icon.svg" width="50px" height="50px">
-				<span class="close" id="closeLogin">&times;</span>
-				<h2>Sign in</h2>
-				<form>
-					<input type="text" placeholder="Username">
-					<input type="password" placeholder="Password">
-					<button type="submit">Sign in</button>
-				</form>
-				<p class="modal__link">Don't have an account? <a href="#" id="switchToSignup">Register</a></p> 
-			</div>
-		</div>
-
-		<script src="{% static 'js/modals.js' %}"></script>
+    <script src="{% static 'js/modals.js' %}"></script>
+    {% if signup_modal_open %}
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const signupModal = document.getElementById('signupModal');
+        signupModal.style.display = 'flex';
+      });
+    </script>
+    {% endif %}
   </body>
 </html>

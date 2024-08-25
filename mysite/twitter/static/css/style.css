@@ -2,6 +2,7 @@
   --black: rgb(0, 0, 0);
   --white: rgb(231, 233, 234);
 	--blue: rgb(29, 155, 240);
+	--red: rgb(244, 33, 46);
 }
 
 * {
@@ -184,3 +185,15 @@ body {
 	text-decoration: none;
 	cursor: pointer;
   }
+
+
+/* MESSAGES */
+
+div.alert.error {
+	font-weight: 300;
+	color: var(--red) !important;
+}
+
+div.modal__messages {
+	padding-bottom: 1rem;
+}
