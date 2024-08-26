@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
+from django.urls import reverse
 from ..views.auth import register_user
 
 @csrf_exempt
@@ -24,6 +25,11 @@ def register(request):
         })
 
     return render(request, 'index.html')
+
+def logout(request):
+    if 'username' in request.session:
+        del request.session['username']
+    return redirect(reverse('index'))
 
 """@csrf_exempt
 def signin(request):
