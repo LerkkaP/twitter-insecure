@@ -35,6 +35,15 @@
           </li>
         </ul>
         <button class="navigation__post">Post</button>
+        
+        <div class="navigation__user">
+          <button class="navigation__user-btn" onclick="toggleLogout()"> 
+            {{ request.session.username }}
+          </button>
+          <div class="navigation__logout" id="logoutMenu">
+          </div>
+        </div>
+
       </nav>
 
       <main class="feed">
@@ -47,7 +56,6 @@
       </main>
     </div>
 
-    <style>
-    </style>
+
   </body>
 </html>
