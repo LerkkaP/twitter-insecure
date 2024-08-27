@@ -18,7 +18,7 @@ def register_user(request, username, password1, password2):
 
     if errors:
         for error in errors:
-            messages.error(request, error)
+            messages.add_message(request, messages.ERROR, error, extra_tags='signup')
         return False
 
     user = User.objects.create(username=username, password=password1)
@@ -26,7 +26,17 @@ def register_user(request, username, password1, password2):
     request.session['username'] = username
     return True
 
+def login_user(request, username, password):
+    credentials = User.objects.filter(username=username).values('username', 'password').first()
 
+    if credentials is not None:
+        if credentials['username'] == username and credentials['password'] == password:
+            request.session['username'] = username
+            return True
+    
+    messages.add_message(request, messages.ERROR, "Invalid username or password", extra_tags='login')
+    return False
+    
 
 
    

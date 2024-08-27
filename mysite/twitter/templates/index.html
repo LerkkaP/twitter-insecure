@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-		<link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
 
     <title>Twitter</title>
   </head>
@@ -29,22 +29,23 @@
         </div>
       </div>
     </main>
+
     <div class="modal" id="signupModal">
       <div class="modal__content">
         <span class="close" id="closeSignup">&times;</span>
         <img src="{% static 'images/twitter-icon.svg' %}" width="50px" height="50px">
         <h2>Create your account</h2>
-    
+
         {% if messages %}
         <div class="modal__messages">
           {% for message in messages %}
-          <div class="{% if message.tags %}alert {{ message.tags }}{% endif %}">
-            {{ message }}
-          </div>
+            {% if 'signup' in message.tags %}
+              <div class="alert {{ message.tags }}">{{ message }}</div>
+            {% endif %}
           {% endfor %}
         </div>
         {% endif %}
-    
+
         <form method="POST" action="{% url 'register' %}">
           {% csrf_token %}
           <input type="text" name="username" placeholder="Username" value="{{ form_data.username|default:'' }}" required>
@@ -52,30 +53,52 @@
           <input type="password" name="password2" placeholder="Confirm password" value="{{ form_data.password2|default:'' }}" required>
           <button type="submit">Sign Up</button>
         </form>
-        <p class="modal__link">Already have an account? <a href="#" id="switchToSignIn">Sign in</a></p> 
+        <p class="modal__link">Already have an account? <a href="#" id="switchToSignIn">Sign in</a></p>
       </div>
-    </div>    
+    </div>
 
     <div class="modal" id="loginModal">
       <div class="modal__content">
-        <img src="{% static 'images/twitter-icon.svg' %}" width="50px" height="50px">
         <span class="close" id="closeLogin">&times;</span>
+        <img src="{% static 'images/twitter-icon.svg' %}" width="50px" height="50px">
         <h2>Sign in</h2>
-        <form  method="POST">
-          <input type="text" placeholder="Username" name="username">
-          <input type="password" placeholder="Password">
+
+        {% if messages %}
+        <div class="modal__messages">
+          {% for message in messages %}
+            {% if 'login' in message.tags %}
+              <div class="alert {{ message.tags }}">{{ message }}</div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <form method="POST" action="{% url 'login' %}">
+          {% csrf_token %}
+          <input type="text" name="username" placeholder="Username" value="{{ form_data.username|default:'' }}" required>
+          <input type="password" name="password" placeholder="Password" value="{{ form_data.password|default:'' }}" required>
           <button type="submit">Sign in</button>
         </form>
-        <p class="modal__link">Don't have an account? <a href="#" id="switchToSignup">Register</a></p> 
+        <p class="modal__link">Don't have an account? <a href="#" id="switchToSignup">Register</a></p>
       </div>
     </div>
 
     <script src="{% static 'js/modals.js' %}"></script>
+    
     {% if signup_modal_open %}
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         const signupModal = document.getElementById('signupModal');
         signupModal.style.display = 'flex';
+      });
+    </script>
+    {% endif %}
+
+    {% if login_modal_open %}
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const loginModal = document.getElementById('loginModal');
+        loginModal.style.display = 'flex';
       });
     </script>
     {% endif %}

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 from ..views.auth import register_user
+from ..views.auth import login_user
 
 @csrf_exempt
 def register(request):
@@ -11,7 +12,6 @@ def register(request):
         password2 = request.POST.get('password2')
 
         success = register_user(request, username, password1, password2)
-        print(f"Success: {success}")  # Debug line
 
         if success:
             return redirect('/feed')
@@ -31,10 +31,22 @@ def logout(request):
         del request.session['username']
     return redirect(reverse('index'))
 
-"""@csrf_exempt
-def signin(request):
+@csrf_exempt
+def login(request):
     if request.method == 'POST':
-        user = request.POST.get('username')
+        username = request.POST.get('username')
         password = request.POST.get('password')
-        """
+
+        success = login_user(request, username, password)
+
+        if success:
+            return redirect('/feed')
+        return render(request, 'index.html', {
+            'login_modal_open': True,
+            'form_data': {
+                'username': username,
+                'password': password
+            }
+        })
+
 
