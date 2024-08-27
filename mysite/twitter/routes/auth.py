@@ -14,7 +14,7 @@ def register(request):
         success = register_user(request, username, password1, password2)
 
         if success:
-            return redirect('/feed')
+            return redirect('/home')
         return render(request, 'index.html', {
             'signup_modal_open': True,
             'form_data': {
@@ -40,7 +40,7 @@ def login(request):
         success = login_user(request, username, password)
 
         if success:
-            return redirect('/feed')
+            return redirect('/home')
         return render(request, 'index.html', {
             'login_modal_open': True,
             'form_data': {

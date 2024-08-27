@@ -7,3 +7,8 @@ class User(models.Model):
 
     def __str__(self):
         return self.username
+    
+class Post(models.Model):
+    text = models.CharField(max_length=280)
+    pub_date = models.DateField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
