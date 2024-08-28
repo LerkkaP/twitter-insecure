@@ -36,12 +36,20 @@
         </ul>
         <button class="navigation__post">Post</button>
         
-        <div class="navigation__user">
-          <button class="navigation__user-btn" onclick="toggleLogout()"> 
+        <div class="navigation__user" onclick="togglePopup(event)">
+          <div>
+            <img src="{% static 'images/profile-icon.png' %}" width="40px" height="40px" class="navigation__icon">
+          </div>
+          <div>
             {{ request.session.username }}
-          </button>
-          <div class="navigation__logout" id="logoutMenu">
-            <a href="{% url 'logout' %}" class="nav__logout-link">Log Out<a>
+          </div>
+          <div>&#x2026;</div>
+          
+          <div class="popup" id="logoutPopup">
+            <div class="popup-content">
+              <span class="popup-arrow"></span>
+              <a href="{% url 'logout' %}" class="popup-logout-btn"><p>Logout {{request.session.username}}</p></a>
+            </div>
           </div>
         </div>
 
@@ -57,6 +65,20 @@
       </main>
     </div>
 
+    <script>
+function togglePopup(event) {
+  event.stopPropagation(); // Prevent click event from bubbling up
+  var popup = document.getElementById('logoutPopup');
+  popup.style.display = (popup.style.display === 'block') ? 'none' : 'block';
+}
 
+// Close the popup when clicking outside of it
+window.onclick = function(event) {
+  var popup = document.getElementById('logoutPopup');
+  if (popup.style.display === 'block' && !event.target.closest('.navigation__user')) {
+    popup.style.display = 'none';
+  }
+};
+    </script>
   </body>
 </html>
