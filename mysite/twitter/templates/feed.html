@@ -3,10 +3,11 @@
 {% block content %}
     {% load static %}
     <div class="create-post">
-        <form method="POST">
+        <form method="POST" action="{% url 'create_post' %}">
             <img src="{% static 'images/profile-icon.png' %}" width="40px" height="40px" class="navigation__icon">
             <div class="posts">
-                <textarea class="create-post__text" cols="50" maxlength="280" placeholder="What is happening?!"></textarea>
+                <textarea class="create-post__text" cols="50" maxlength="280" placeholder="What is happening?!" name="text"></textarea>
+                <button>Post</button>
             </div>
         </form>
     </div>

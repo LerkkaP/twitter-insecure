@@ -10,5 +10,5 @@ class User(models.Model):
     
 class Post(models.Model):
     text = models.CharField(max_length=280)
-    pub_date = models.DateField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateField(auto_now=True)
