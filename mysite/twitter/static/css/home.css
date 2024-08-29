@@ -29,6 +29,7 @@ body {
   width: 250px;
   display: flex;
   flex-direction: column;
+  position: fixed;
 }
 
 .navigation__list {
@@ -81,11 +82,10 @@ body {
 
 .feed {
   width: 600px;
-  padding: 20px;
   padding-top: 70px; /* Add padding to prevent content overlap with fixed buttons */
-  overflow-y: auto;
-  border: 1px solid rgb(47, 51, 54);
+  overflow-x: clip;
   position: relative;
+  margin: 0 auto;
 }
 
 .feed-header {
@@ -119,12 +119,14 @@ body {
 }
 
 .feed .post {
-  background-color: var(--white);
   color: var(--black);
-  border: 1px solid rgb(47, 51, 54);
-  border-radius: 8px;
+  border-bottom: 1px solid rgb(47, 51, 54);
   padding: 15px;
-  margin-bottom: 20px;
+  color: var(--white);
+}
+
+.posts-feed {
+  border: 1px solid rgb(47, 51, 54);
 }
 
 /* feed */
@@ -164,3 +166,25 @@ body {
   border-radius: 20px;
   padding: 12px 16px;
 }
+
+.create-post__button {
+  color: inherit;
+	border: none;
+	font: inherit;
+	cursor: pointer;
+	flex-direction: column;
+	height: 2.5rem;
+	border-radius: 1.2rem;
+	background-color: var(--blue);
+	font-weight: bold;
+  width: 66px;
+  height: 36px;
+  font-size: 15px;
+}
+
+        .create-post__text {
+            width: 100%;
+            min-height: 50px; 
+            overflow: hidden;
+            resize: none; 
+        }
