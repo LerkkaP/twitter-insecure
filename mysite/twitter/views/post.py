@@ -1,8 +1,5 @@
-from ..models import Post
-from ..models import User
+from ..models import Post, User
 from django.contrib import messages
-from django.shortcuts import redirect
-from django.urls import reverse
 
 def add_post(request, username, text):
     if request.method == 'POST':
@@ -20,10 +17,3 @@ def add_post(request, username, text):
                 messages.error(request, "User does not exist.")
         else:
             messages.error(request, "You need to be logged in to post.")
-        
-    return redirect(reverse('home'))  # Redirect to the feed page to show the updated posts
-
-
-
-
-
