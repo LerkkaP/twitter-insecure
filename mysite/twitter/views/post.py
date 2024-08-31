@@ -1,4 +1,4 @@
-from ..models import Post, User
+"""from ..models import Post, User
 from django.contrib import messages
 from django.utils import timezone
 from django.db import connection
@@ -15,11 +15,43 @@ def add_post(request, username, text):
                 else:
                     with connection.cursor() as cursor:
                         created_at = timezone.now().date()
-                        cursor.execute(f"INSERT INTO twitter_post (text, user_id, created_at) VALUES ('{text}', {user_instance.id}, '{created_at}')")
+                        query = f"INSERT INTO twitter_post (text, user_id, created_at) VALUES ('{text}', {user_instance.id}, '{created_at}')"
+                        print(query)
+                        cursor.execute(query)
                         #cursor.execute(f"INSERT INTO POST text = '{text}' ")
 
                     #Post.objects.create(text=text, user=user_instance)
                     messages.success(request, "Post added successfully!")
+            except User.DoesNotExist:
+                messages.error(request, "User does not exist.")
+        else:
+            messages.error(request, "You need to be logged in to post.")"""
+
+from ..models import Post, User
+from django.contrib import messages
+from django.utils import timezone
+from django.db import connection
+
+def add_post(request, username, text):
+    if request.method == 'POST':
+        text = request.POST.get('text')
+        username = request.session.get('username')  # Fetch username from session
+        if username:
+            try:
+                user_instance = User.objects.get(username=username)
+                if len(text) > 280:
+                    messages.error(request, "Max length 280 characters!")
+                else:
+                    created_at = timezone.now().strftime('%Y-%m-%d')  # Ensure correct date format
+                    query = f"INSERT INTO twitter_post (text, user_id, created_at) VALUES ('{text}', {user_instance.id}, '{created_at}')"
+                    print("Executing SQL Query:", query)  # Debug print
+                    try:
+                        with connection.cursor() as cursor:
+                            cursor.execute(query)
+                        messages.success(request, "Post added successfully!")
+                    except Exception as e:
+                        print("SQL Error:", e)  # Print any SQL errors
+                        messages.error(request, "An error occurred while adding the post.")
             except User.DoesNotExist:
                 messages.error(request, "User does not exist.")
         else:

@@ -6,6 +6,7 @@ from .routes.auth import register
 from .routes.auth import logout
 from .routes.auth import login
 from .routes.post_route import create_post
+from .routes.post_route import post_detail
 
 
 urlpatterns = [
@@ -14,5 +15,7 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('login/', login, name='login'),
     path('logout/', logout, name='logout'),
-    path('create_post/', create_post, name='create_post')
+    path('create_post/', create_post, name='create_post'),
+    path('post/<int:post_id>/', post_detail, name='post_detail'),  
+
     ]
