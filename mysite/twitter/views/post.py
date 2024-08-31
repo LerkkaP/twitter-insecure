@@ -1,5 +1,7 @@
 from ..models import Post, User
 from django.contrib import messages
+from django.utils import timezone
+from django.db import connection
 
 def add_post(request, username, text):
     if request.method == 'POST':
@@ -11,7 +13,12 @@ def add_post(request, username, text):
                 if len(text) > 280:
                     messages.error(request, "Max length 280 characters!")
                 else:
-                    Post.objects.create(text=text, user=user_instance)
+                    with connection.cursor() as cursor:
+                        created_at = timezone.now().date()
+                        cursor.execute(f"INSERT INTO twitter_post (text, user_id, created_at) VALUES ('{text}', {user_instance.id}, '{created_at}')")
+                        #cursor.execute(f"INSERT INTO POST text = '{text}' ")
+
+                    #Post.objects.create(text=text, user=user_instance)
                     messages.success(request, "Post added successfully!")
             except User.DoesNotExist:
                 messages.error(request, "User does not exist.")
