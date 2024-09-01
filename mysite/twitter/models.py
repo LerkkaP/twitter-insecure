@@ -16,5 +16,5 @@ class Post(models.Model):
 class Comment(models.Model):
     comment_text = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     created_at = models.DateField(auto_now=True)

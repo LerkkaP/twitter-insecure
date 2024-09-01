@@ -132,6 +132,10 @@ body {
   word-wrap: break-word; 
 }
 
+.post:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
 .date {
   color: rgb(113, 118, 123);
 }
@@ -224,15 +228,53 @@ body {
   font-size: 15px;
 }
 
-        .create-post__text {
-            width: 100%;
-            min-height: 50px; 
-            overflow: hidden;
-            resize: none; 
-        }
+  .create-post__text {
+      width: 100%;
+      min-height: 50px; 
+      overflow: hidden;
+      resize: none; 
+    }
 
         
 .post__information {
+  display: flex;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.comments__comment {
+  padding: 10px;
+  width: 100%; 
+  max-width: 600px; 
+  word-wrap: break-word; 
+  color: var(--black);
+  border-bottom: 1px solid rgb(47, 51, 54);
+  padding: 15px;
+  color: var(--white);
+}
+
+.post-detail {
+  border-left: 1px solid rgb(47, 51, 54);
+  border-right: 1px solid rgb(47, 51, 54);
+}
+
+.add-comment {
+  padding: 15px;
+  border-bottom: 1px solid rgb(47, 51, 54);
+}
+
+.post-detail__information {
+  padding: 15px;
+  
+}
+
+.testi {
+  display: flex;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.comments__information {
   display: flex;
   gap: 0.5rem;
   padding-bottom: 1rem;

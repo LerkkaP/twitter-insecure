@@ -1,38 +1,43 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div>
-    <div>
-        <div>
+<div class="post-detail">
+    <div class="post-detail__information">
+        <div class="testi">
             <p><strong>{{ post.user.username }}</strong></p>
-            <p>{{ post.created_at }}</p>
+            <p class="date">{{ post.created_at }}</p>
         </div>
         <div>
             <p>{{ post.text }}</p>
         </div>
     </div>
 
-    <!--
+    <div class="add-comment">
+
+        <form method="POST" action="{% url 'post_detail' post.id%}">
+            {% csrf_token %}
+            <div class="add-comment__content">
+                <textarea id="post-textarea" class="create-post__text" cols="50" maxlength="280" placeholder="Post your reply" name="comment_text"></textarea>
+                <button type="submit" class="create-post__button">Reply</button>
+            </div>
+        </form>
+    </div>
+
     <div class="comments">
-        <h3>Comments</h3>
         {% for comment in comments %}
-            <div class="comment">
-                <p><strong>{{ comment.user.username }}</strong>: {{ comment.text }}</p>
+        <div class="comments__comment">
+            <div class="comments__information">
+                <p><strong>{{ comment.user.username }}</strong></p>
                 <p class="date">{{ comment.created_at }}</p>
             </div>
+            <div>
+                <p>
+                    {{ comment.comment_text }} 
+                </p>
+            </div>
+        </div>
         {% endfor %}
-    </div>-->
-
-    <!--<div class="add-comment">
-        <h3>Add a Comment</h3>
-
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Add Comment</button>
-        </form>
-    </div>-->
+    </div>
 </div>
 {% endblock %}
-
 
