@@ -56,6 +56,9 @@ def add_post(request, username, text):
             messages.error(request, "You need to be logged in to post.")
 
 def add_comment(request, username, comment_text, post_id):
+    if len(comment_text) == 0:
+        messages.error(request, "Comment can't be empty")
+        return
     created_at = timezone.now().strftime('%Y-%m-%d') 
     user_instance = User.objects.get(username=username)
     post_instance = Post.objects.get(id=post_id)
