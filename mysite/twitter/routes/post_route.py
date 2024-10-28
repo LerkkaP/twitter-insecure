@@ -15,6 +15,7 @@ def create_post(request):
         return redirect(reverse('home'))  
     return render(request, 'feed.html')
 
+@login_required
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     comments = post.comments.all() 
@@ -28,6 +29,7 @@ def post_detail(request, post_id):
     if request.method == 'POST':
         username = request.session.get('username')
         comment_text = request.POST.get('comment_text')
+        
         add_comment(request, username, comment_text, post_id)
 
         return redirect('post_detail', post_id=post.id)

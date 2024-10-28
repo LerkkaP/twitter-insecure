@@ -58,7 +58,7 @@ def add_post(request, username, text):
 def add_comment(request, username, comment_text, post_id):
     if len(comment_text) == 0:
         messages.error(request, "Comment can't be empty")
-        return
+        return False
     created_at = timezone.now().strftime('%Y-%m-%d') 
     user_instance = User.objects.get(username=username)
     post_instance = Post.objects.get(id=post_id)
