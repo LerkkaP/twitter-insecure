@@ -23,15 +23,15 @@ def register_user(request, username, password1, password2):
 
     user = User.objects.create(username=username, password=password1)
     user.save()
-    request.session['username'] = username
+    request.session['user_id'] = user.id
     return True
 
 def login_user(request, username, password):
-    credentials = User.objects.filter(username=username).values('username', 'password').first()
+    user = User.objects.filter(username=username).values('id','username', 'password').first()
 
-    if credentials is not None:
-        if credentials['username'] == username and credentials['password'] == password:
-            request.session['username'] = username
+    if user is not None:
+        if user['username'] == username and user['password'] == password:
+            request.session['user_id'] = user['id']
             return True
     
     messages.add_message(request, messages.ERROR, "Invalid username or password", extra_tags='login')

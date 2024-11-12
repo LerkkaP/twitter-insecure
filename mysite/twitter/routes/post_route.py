@@ -11,7 +11,7 @@ def create_post(request):
     if request.method == 'POST':
         text = request.POST.get('text')
         username = request.session.get('username')
-        add_post(request, text, username)
+        add_post(request, text)
         return redirect(reverse('home'))  
     return render(request, 'feed.html')
 
@@ -27,10 +27,9 @@ def post_detail(request, post_id):
         })
     
     if request.method == 'POST':
-        username = request.session.get('username')
         comment_text = request.POST.get('comment_text')
         
-        add_comment(request, username, comment_text, post_id)
+        add_comment(request, comment_text, post_id)
 
         return redirect('post_detail', post_id=post.id)
 

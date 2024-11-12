@@ -27,8 +27,7 @@ def register(request):
     return render(request, 'index.html')
 
 def logout(request):
-    if 'username' in request.session:
-        del request.session['username']
+    del request.session['user_id']
     return redirect(reverse('index'))
 
 @csrf_exempt
