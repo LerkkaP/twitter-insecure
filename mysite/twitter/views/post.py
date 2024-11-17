@@ -41,3 +41,7 @@ def add_comment(request, comment_text, post_id):
     comment.save()
     return True
 
+def delete_post(request, post_id):
+    post_to_delete = Post.objects.get(id=post_id)
+    post_to_delete.delete()
+

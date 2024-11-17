@@ -70,7 +70,7 @@ body {
   color: var(--white);
   font-size: 1rem;
   cursor: pointer;
-  width: 90%;
+  width: 100%;
   font-weight: bold;
 }
 
@@ -278,4 +278,34 @@ body {
   display: flex;
   gap: 0.5rem;
   padding-bottom: 1rem;
+}
+
+.navigation__list .navigation__item:first-child .navigation__link:hover {
+  background-color: transparent;
+}
+
+.delete-container {
+  position: absolute;
+  right: 0;
+  padding-top: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.delete-container__btn {
+  color: inherit;
+	border: none;
+	font: inherit;
+	cursor: pointer;
+	flex-direction: column;
+	height: 2.5rem;
+	border-radius: 0rem;
+	background-color: var(--red);
+	font-weight: 500;
+  width: 66px;
+  height: 36px;
+  font-size: 15px;
+}
+
+.delete-container__btn:hover {
+  background-color: #8B0000;
 }

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from twitter.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
-from ..views.post import add_post, add_comment
+from ..views.post import add_post, add_comment, delete_post
 from ..models import Post
 
 @login_required
@@ -10,7 +10,6 @@ from ..models import Post
 def create_post(request):
     if request.method == 'POST':
         text = request.POST.get('text')
-        username = request.session.get('username')
         add_post(request, text)
         return redirect(reverse('home'))  
     return render(request, 'feed.html')
@@ -33,3 +32,11 @@ def post_detail(request, post_id):
 
         return redirect('post_detail', post_id=post.id)
 
+@login_required
+@csrf_exempt
+def remove_post(request, post_id):
+    if request.method == 'POST':
+        delete_post(request, post_id)
+        user_id = request.session.get('user_id')
+        return redirect('profile', user_id=user_id)
+    return render(request, 'feed.html')
