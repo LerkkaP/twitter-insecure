@@ -41,6 +41,10 @@ body {
   margin-bottom: 15px;
 }
 
+#bird {
+  display: inline-flex !important;
+}
+
 .navigation__link {
   display: flex;
   align-items: center;
@@ -74,6 +78,10 @@ body {
   font-weight: bold;
 }
 
+.navigation__post:hover {
+  background-color: rgb(25, 119, 182);
+}
+
 .navigation__user {
   display: flex;
   align-items: center; /* Align items vertically centered */
@@ -86,6 +94,16 @@ body {
 .navigation__user:hover {
   background-color: rgba(255, 255, 255, 0.15);
   border-radius: 999px;
+}
+
+.navigation__dots {
+  font-size: 1.25rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+.navigation__picture-username {
+  display: flex;
+  align-items: center;
 }
 
 .feed {
@@ -123,6 +141,10 @@ body {
 
 .posts-feed {
   border: 1px solid rgb(47, 51, 54);
+}
+
+.posts-feed a {
+  text-decoration: none;
 }
 
 .post {
@@ -184,17 +206,15 @@ body {
 
 .popup__arrow {
   position: absolute;
-  bottom: -10px; /* Position the arrow at the bottom */
+  bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
   width: 0;
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-top: 10px solid var(--black); /* Change this color to match the popup background */
-  
-  /* Adding box shadow to the arrow */
-  box-shadow: 0px 0px 5px 0px var(--white), 0px 0px 1px 0px var(--white);
+  border-top: 10px solid var(--black);
+  filter: drop-shadow(rgb(51, 54, 57) 1px 1px 1px);
 }
 
 .popup__content {
@@ -228,12 +248,16 @@ body {
   font-size: 15px;
 }
 
-  .create-post__text {
-      width: 100%;
-      min-height: 50px; 
-      overflow: hidden;
-      resize: none; 
-    }
+.create-post__button:hover {
+  background-color: rgb(25, 119, 182);
+}
+
+.create-post__text {
+  width: 100%;
+  min-height: 50px; 
+  overflow: hidden;
+  resize: none; 
+}
 
         
 .post__information {
@@ -298,7 +322,7 @@ body {
 	cursor: pointer;
 	flex-direction: column;
 	height: 2.5rem;
-	border-radius: 0rem;
+	border-radius: 999px;
 	background-color: var(--red);
 	font-weight: 500;
   width: 66px;

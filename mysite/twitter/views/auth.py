@@ -32,6 +32,7 @@ def login_user(request, username, password):
     if user is not None:
         if user['username'] == username and user['password'] == password:
             request.session['user_id'] = user['id']
+            request.session['username'] = user['username']
             return True
     
     messages.add_message(request, messages.ERROR, "Invalid username or password", extra_tags='login')

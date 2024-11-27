@@ -17,7 +17,7 @@
       <nav class="navigation">
         <ul class="navigation__list">
           <li class="navigation__item">
-            <a href="{% url 'home' %}" class="navigation__link">
+            <a id="bird" href="{% url 'home' %}" class="navigation__link">
               <img src="{% static 'images/twitter-icon.svg' %}" width="30px" height="30px" class="navigation__icon">
             </a>
           </li>
@@ -37,13 +37,13 @@
         <button class="navigation__post">Post</button>
         
         <div class="navigation__user" onclick="togglePopup(event)">
-          <div>
+          <div class="navigation__picture-username">
             <img src="{% static 'images/profile-icon.png' %}" width="40px" height="40px" class="navigation__icon">
+            {{ request.session.username }}
           </div>
-          <div>
-            {{ request.session.user_id }}
-          </div>
-          <div>&#x2026;</div>
+          <span class="navigation__dots">
+            &#x2026;
+          </span>
           
           <div class="popup" id="logoutPopup">
             <div class="popup__content">
@@ -51,7 +51,7 @@
                 <p>Logout @{{request.session.username}}</p>
               </a>
             </div>
-            <span class="popup__arrow"></span> 
+            <span class="popup__arrow"></span>
           </div>
         </div>
 
