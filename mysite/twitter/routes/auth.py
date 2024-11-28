@@ -6,45 +6,45 @@ from ..views.auth import login_user
 
 @csrf_exempt
 def register(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password1 = request.POST.get('password1')
-        password2 = request.POST.get('password2')
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password1 = request.POST.get("password1")
+        password2 = request.POST.get("password2")
 
         success = register_user(request, username, password1, password2)
 
         if success:
-            return redirect('/home')
-        return render(request, 'index.html', {
-            'signup_modal_open': True,
-            'form_data': {
-                'username': username,
-                'password1': password1,
-                'password2': password2
+            return redirect("/home")
+        return render(request, "index.html", {
+            "signup_modal_open": True,
+            "form_data": {
+                "username": username,
+                "password1": password1,
+                "password2": password2
             }
         })
 
-    return render(request, 'index.html')
+    return render(request, "index.html")
 
 def logout(request):
-    del request.session['user_id']
-    return redirect(reverse('index'))
+    del request.session["user_id"]
+    return redirect(reverse("index"))
 
 @csrf_exempt
 def login(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
 
         success = login_user(request, username, password)
 
         if success:
-            return redirect('/home')
-        return render(request, 'index.html', {
-            'login_modal_open': True,
-            'form_data': {
-                'username': username,
-                'password': password
+            return redirect("/home")
+        return render(request, "index.html", {
+            "login_modal_open": True,
+            "form_data": {
+                "username": username,
+                "password": password
             }
         })
 

@@ -21,8 +21,10 @@ body {
 
 .home {
   display: flex;
-  width: 1280px;
+  width: 80rem;
   height: 100vh;
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 
 .navigation {
@@ -332,4 +334,8 @@ body {
 
 .delete-container__btn:hover {
   background-color: #8B0000;
+}
+
+.profile-header {
+  padding-bottom: 1rem;
 }
