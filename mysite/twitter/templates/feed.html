@@ -4,6 +4,7 @@
     {% load static %}
     <div class="create-post">
         <form method="POST" action="{% url 'create_post' %}">
+            <!--{% csrf_token %}-->
             <a href="/profile/{{ request.session.user_id }}">
                 <img src="{% static 'images/profile-icon.png' %}" width="40px" height="40px" class="navigation__icon">
             </a>
@@ -25,6 +26,7 @@
                 </div>
                 <div>
                     <p>{{ post.text | safe }}</p>
+                    <!--<p>{{ post.text }}</p>-->
                 </div>
             </div>
         </a>
