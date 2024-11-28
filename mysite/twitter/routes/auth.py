@@ -4,7 +4,6 @@ from django.urls import reverse
 from ..views.auth import register_user
 from ..views.auth import login_user
 
-@csrf_exempt
 def register(request):
     if request.method == "POST":
         username = request.POST.get("username")
@@ -30,7 +29,6 @@ def logout(request):
     del request.session["user_id"]
     return redirect(reverse("index"))
 
-@csrf_exempt
 def login(request):
     if request.method == "POST":
         username = request.POST.get("username")

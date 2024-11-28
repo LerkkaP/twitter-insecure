@@ -33,7 +33,6 @@ def post_detail(request, post_id):
         return redirect("post_detail", post_id=post.id)
 
 @login_required
-@csrf_exempt
 def remove_post(request, post_id):
     if request.method == "POST":
         delete_post(request, post_id)

@@ -25,6 +25,7 @@ def add_post(request, text):
 def add_comment(request, comment_text, post_id):
     if len(comment_text) == 0:
         messages.error(request, "Comment can't be empty")
+        print("Comment cannot be empty")
         return False
     user_id = request.session.get("user_id")
     user = User.objects.filter(id=user_id).values("username").first()
