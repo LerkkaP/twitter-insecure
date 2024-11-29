@@ -23,39 +23,11 @@
           <h1 class="index__heading-primary">Happening now</h1>
           <h2 class="index__heading-secondary">Join today.</h2>
           <div class="index__buttons">
-            <button class="index__button index__button--filled" id="openSignup">Create an account</button>
             <button class="index__button index__button--outlined" id="openLogin">Sign in</button>
           </div>
         </div>
       </div>
     </main>
-
-    <div class="modal" id="signupModal">
-      <div class="modal__content">
-        <span class="close" id="closeSignup">&times;</span>
-        <img src="{% static 'images/twitter-icon.svg' %}" width="50px" height="50px">
-        <h2>Create your account</h2>
-
-        {% if messages %}
-        <div class="modal__messages">
-          {% for message in messages %}
-            {% if 'signup' in message.tags %}
-              <div class="alert {{ message.tags }}">{{ message }}</div>
-            {% endif %}
-          {% endfor %}
-        </div>
-        {% endif %}
-
-        <form method="POST" action="{% url 'register' %}">
-          {% csrf_token %}
-          <input type="text" name="username" placeholder="Username" value="{{ form_data.username|default:'' }}" required>
-          <input type="password" name="password1" placeholder="Password" value="{{ form_data.password1|default:'' }}" required>
-          <input type="password" name="password2" placeholder="Confirm password" value="{{ form_data.password2|default:'' }}" required>
-          <button type="submit">Sign Up</button>
-        </form>
-        <p class="modal__link">Already have an account? <a href="#" id="switchToSignIn">Sign in</a></p>
-      </div>
-    </div>
 
     <div class="modal" id="loginModal">
       <div class="modal__content">
@@ -79,28 +51,9 @@
           <input type="password" name="password" placeholder="Password" value="{{ form_data.password|default:'' }}" required>
           <button type="submit">Sign in</button>
         </form>
-        <p class="modal__link">Don't have an account? <a href="#" id="switchToSignup">Register</a></p>
       </div>
     </div>
 
     <script src="{% static 'js/modals.js' %}"></script>
-    
-    {% if signup_modal_open %}
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const signupModal = document.getElementById('signupModal');
-        signupModal.style.display = 'flex';
-      });
-    </script>
-    {% endif %}
-
-    {% if login_modal_open %}
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const loginModal = document.getElementById('loginModal');
-        loginModal.style.display = 'flex';
-      });
-    </script>
-    {% endif %}
   </body>
 </html>

@@ -1,29 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
-from ..views.auth import register_user
 from ..views.auth import login_user
-
-def register(request):
-    if request.method == "POST":
-        username = request.POST.get("username")
-        password1 = request.POST.get("password1")
-        password2 = request.POST.get("password2")
-
-        success = register_user(request, username, password1, password2)
-
-        if success:
-            return redirect("/home")
-        return render(request, "index.html", {
-            "signup_modal_open": True,
-            "form_data": {
-                "username": username,
-                "password1": password1,
-                "password2": password2
-            }
-        })
-
-    return render(request, "index.html")
 
 def logout(request):
     del request.session["user_id"]
