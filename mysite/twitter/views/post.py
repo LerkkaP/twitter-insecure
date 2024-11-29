@@ -41,5 +41,10 @@ def add_comment(request, comment_text, post_id):
 
 def delete_post(request, post_id):
     post_to_delete = Post.objects.get(id=post_id)
+    # post_user_id = post_to_delete.user.id
+    # user_id = request.session.get("user_id")
+    # if user_id == post_user_id:
+        # post_to_dete.delete()
     post_to_delete.delete()
+  
 
