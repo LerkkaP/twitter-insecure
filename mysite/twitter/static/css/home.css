@@ -264,9 +264,31 @@ body {
         
 .post__information {
   display: flex;
-  gap: 0.5rem;
   padding-bottom: 1rem;
 }
+
+.post__information strong {
+  padding-right: 0.5rem;
+}
+
+.post__information a {
+  color: inherit;
+}
+
+.post__information a:hover {
+  text-decoration: underline;
+}
+
+.username {
+  cursor: pointer;
+  text-decoration: none; 
+}
+
+.username:hover {
+  text-decoration: underline;
+}
+
+
 
 .comments__comment {
   padding: 10px;

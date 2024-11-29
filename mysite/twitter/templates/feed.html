@@ -16,21 +16,20 @@
     </div>
 
     <div class="posts-feed">
-        {% for post in posts %}
-        <a href="{% url 'post_detail' post.id%}">
-            <div class="post">
-                <div class="post__information">
-                    <p><strong>{{ post.user.username }}</strong></p>
-                    <p class="date">{{ post.created_at }}</p>
-
-                </div>
-                <div>
-                    <p>{{ post.text | safe }}</p>
-                    <!--<p>{{ post.text }}</p>-->
-                </div>
-            </div>
-        </a>
-        {% endfor %}
+			{% for post in posts %}
+			<a href="{% url 'post_detail' post.id%}">
+				<div class="post">
+					<div class="post__information">
+						<strong class="username" data-user-id="{{ post.user.id }}">{{ post.user.username }}</strong>
+						<p class="date">{{ post.created_at }}</p>
+					</div>
+					<div>
+						<p>{{ post.text | safe }}</p>
+						<!--<p>{{ post.text }}</p>-->
+					</div>
+				</div>
+			</a>
+			{% endfor %}
     </div>
 
     <script>
@@ -45,5 +44,17 @@
         textarea.addEventListener('input', adjustTextareaHeight);
 
         adjustTextareaHeight();
+
+				const usernames = document.querySelectorAll('.username');
+
+				usernames.forEach(username => {
+						username.addEventListener('click', function(event) {
+								event.preventDefault();
+
+								const userId = this.getAttribute('data-user-id');
+
+								window.location.href = `/profile/${userId}`;
+						});
+				});
     </script>
 {% endblock %}
