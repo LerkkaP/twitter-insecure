@@ -20,7 +20,6 @@ def add_post(request, text):
                 query = f"INSERT INTO twitter_post (text, user_id, created_at) VALUES ('{text}', {user_instance.id}, '{created_at}')"
                 cursor = connection.cursor()
                 cursor.execute(query)
-                # Post.objects.create(text=text, user=user_instance, created_at=created_at)
                 print("Post added successfully!")
 
 def add_comment(request, comment_text, post_id):
@@ -41,10 +40,6 @@ def add_comment(request, comment_text, post_id):
 
 def delete_post(request, post_id):
     post_to_delete = Post.objects.get(id=post_id)
-    # post_user_id = post_to_delete.user.id
-    # user_id = request.session.get("user_id")
-    # if user_id == post_user_id:
-        # post_to_dete.delete()
     post_to_delete.delete()
   
 

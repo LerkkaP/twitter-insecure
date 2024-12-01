@@ -47,8 +47,8 @@
 
         <form method="POST" action="{% url 'login' %}">
           {% csrf_token %}
-          <input type="text" name="username" placeholder="Username" value="{{ form_data.username|default:'' }}" required>
-          <input type="password" name="password" placeholder="Password" value="{{ form_data.password|default:'' }}" required>
+          <input type="text" name="username" placeholder="Username" value="{{ form_data.username|default:'' }}">
+          <input type="password" name="password" placeholder="Password" value="{{ form_data.password|default:'' }}">
           <button type="submit">Sign in</button>
         </form>
       </div>
