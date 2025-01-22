@@ -153,6 +153,8 @@ body {
   width: 100%; 
   max-width: 600px; 
   word-wrap: break-word; 
+  display: flex;
+  flex-direction: row;
 }
 
 .post:hover {
@@ -263,7 +265,8 @@ body {
         
 .post__information {
   display: flex;
-  padding-bottom: 1rem;
+  padding-bottom: 0.25rem;
+  align-items: center;
 }
 
 .post__information strong {
@@ -276,6 +279,10 @@ body {
 
 .post__information a:hover {
   text-decoration: underline;
+}
+
+.post__information + p {
+  overflow-wrap: anywhere;
 }
 
 .username {
