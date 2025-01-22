@@ -38,14 +38,28 @@
           <div class="navigation__picture-username">
             {% if request.session.username == "ricky" %}
               <img src="{% static 'images/ricky.png' %}" width="40px" height="40px" class="navigation__icon">
-              {{ request.session.username }}
+              <div>
+                <div class="navigation__name">
+                  Richard LaFleur
+                </div>
+                <div class="navigation__username">
+                  @{{ request.session.username }}
+                </div>
+              </div>
             {% else %}
               <img src="{% static 'images/bubbles.png' %}" width="40px" height="40px" class="navigation__icon">
-              {{ request.session.username }}
+              <div>
+                <div class="navigation__name">
+                  Bubbles
+                </div>
+                <div class="navigation__username">
+                  @{{ request.session.username }}
+                </div>
+              </div>
             {% endif %}
           </div>
           <span class="navigation__dots">
-            &#x2026;
+            <svg fill="#ffffff" height="16px" width="16px" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path class="cls-1" d="M8,6.5A1.5,1.5,0,1,1,6.5,8,1.5,1.5,0,0,1,8,6.5ZM.5,8A1.5,1.5,0,1,0,2,6.5,1.5,1.5,0,0,0,.5,8Zm12,0A1.5,1.5,0,1,0,14,6.5,1.5,1.5,0,0,0,12.5,8Z"></path> </g></svg>
           </span>
           
           <div class="popup" id="logoutPopup">

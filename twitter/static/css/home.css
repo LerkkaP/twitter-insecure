@@ -100,7 +100,6 @@ body {
 
 .navigation__dots {
   font-size: 1.25rem !important;
-  padding-bottom: 0.5rem !important;
 }
 
 .navigation__picture-username {
@@ -360,4 +359,13 @@ body {
 
 .profile-header {
   padding-bottom: 1rem;
+}
+
+.navigation__name {
+  font-weight: bold;
+}
+
+.navigation__username {
+  padding-top: 0.1rem;
+  color: rgb(113, 118, 123)
 }
