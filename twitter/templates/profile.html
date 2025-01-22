@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% load static %}
     <h1 class="profile-header">Posts</h1>
     <div class="posts-feed">
         {% for post in posts %}
@@ -15,13 +16,19 @@
         {% endif %}
         <a href="{% url 'post_detail' post.id %}">
             <div class="post">
-                <div class="post__information">
-                    <p><strong>{{ post.user.username }}</strong></p>
-                    <p class="date">{{ post.created_at }}</p>
-
+                <div>
+                    {% if post.user.username == "ricky" %}
+                        <img src="{% static 'images/ricky.png' %}" width="40px" height="40px" class="navigation__icon">
+                    {% else %}
+                        <img src="{% static 'images/bubbles.png' %}" width="40px" height="40px" class="navigation__icon">
+                    {% endif %}
                 </div>
                 <div>
-                    <p>{{ post.text}}</p>
+                    <div class="post__information">
+                        <strong class="username" data-user-id="{{ post.user.id }}">{{ post.user.username }}</strong>
+                        <p class="date">{{ post.created_at }}</p>
+                    </div>
+                    <p>{{ post.text | safe | linebreaksbr }}</p>
                 </div>
             </div>
         </a>
