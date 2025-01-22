@@ -5,7 +5,11 @@
     <div class="create-post">
         <form method="POST" action="{% url 'create_post' %}">
             <a href="/profile/{{ request.session.user_id }}">
-                <img src="{% static 'images/profile-icon.png' %}" width="40px" height="40px" class="navigation__icon">
+                {% if request.session.username == "ricky" %}
+                <img src="{% static 'images/ricky.png' %}" width="40px" height="40px" class="navigation__icon">
+                {% else %}
+                <img src="{% static 'images/bubbles.png' %}" width="40px" height="40px" class="navigation__icon">
+                {% endif %}
             </a>
             <div class="posts">
                 <textarea id="post-textarea" class="create-post__text" cols="50" maxlength="280" placeholder="What is happening?!" name="text"></textarea>

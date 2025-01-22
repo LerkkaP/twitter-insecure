@@ -20,11 +20,11 @@
    This creates the following accounts for testing purposes:
 
    ```bash
-   username: `user1`
-   password: `password1`
+   username: `ricky`
+   password: `SunnyvaleKing2025`
    ---------------------
-   username: `user2`
-   password: `password2`
+   username: `bubbles`
+   password: `KittyLord99`
    ```
    
 5. Run the application and you're ready to go:
