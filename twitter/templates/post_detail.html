@@ -4,7 +4,7 @@
 {% load static %}
 <div class="post-detail">
     <div class="post-detail__information">
-        <div class="testi">
+        <div class="post-detail__container">
             <div>
                 {% if post.user.username == "ricky" %}
                     <img src="{% static 'images/ricky.png' %}" width="40px" height="40px" class="navigation__icon">
@@ -14,7 +14,9 @@
             </div>
             <div>
                 <div class="post__information">
-                    <strong class="username" data-user-id="{{ post.user.id }}">{{ post.user.username }}</strong>
+                    <a href="/profile/{{ post.user.id }}">
+                        <strong class="username" data-user-id="{{ post.user.id }}">{{ post.user.username }}</strong>
+                    </a>
                     <p class="date">{{ post.created_at }}</p>
                 </div>
                 <p>{{ post.text | safe | linebreaksbr }}</p>
@@ -28,7 +30,6 @@
         <form method="POST" action="{% url 'post_detail' post.id%}">
             {% csrf_token %}
             <div class="add-comment__content">
-                
                 <textarea id="post-textarea" class="create-post__text" cols="50" maxlength="280" placeholder="Post your reply" name="comment_text"></textarea>
                 <button type="submit" class="create-post__button">Reply</button>
             </div>
@@ -56,7 +57,9 @@
             </div>
             <div>
                 <div class="post__information">
-                    <strong class="username" data-user-id="{{ post.user.id }}">{{ comment.user.username }}</strong>
+                    <a href="/profile/{{ comment.user.id}}">
+                        <strong class="username">{{ comment.user.username }}</strong>
+                    </a>
                     <p class="date">{{ comment.created_at }}</p>
                 </div>
                 <p>{{ comment.comment_text | safe | linebreaksbr }}</p>

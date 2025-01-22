@@ -86,8 +86,8 @@ body {
 
 .navigation__user {
   display: flex;
-  align-items: center; /* Align items vertically centered */
-  justify-content: space-between; /* Distribute space between items */
+  align-items: center; 
+  justify-content: space-between; 
   margin-top: 3.5rem;
   cursor: pointer;
   padding: 10px;
@@ -164,7 +164,6 @@ body {
 .date {
   color: rgb(113, 118, 123);
 }
-/* feed */
 
 .create-post__text {
   border: none;
@@ -194,29 +193,35 @@ body {
 }
 
 
-/* Popup styles */
+.navigation__user {
+  position: relative;
+  cursor: pointer;
+}
+
 .popup {
   display: none;
-  position: fixed;
-  backface-visibility: hidden;
+  position: absolute; 
   background-color: var(--black);
   box-shadow: var(--white) 0px 0px 5px 0px, var(--white) 0px 0px 1px 0px;
   border-radius: 20px;
   padding: 12px 0;
   width: 300px;
-  top: 23%;
+  top: 100%; 
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
 }
 
 .popup__arrow {
   position: absolute;
-  bottom: -10px;
+  top: -10px; 
   left: 50%;
   transform: translateX(-50%);
   width: 0;
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-top: 10px solid var(--black);
+  border-bottom: 10px solid var(--black); 
   filter: drop-shadow(rgb(51, 54, 57) 1px 1px 1px);
 }
 
@@ -235,6 +240,7 @@ body {
   text-decoration: none;
   font-weight: 700;
 }
+
 
 .create-post__button {
   color: inherit;
@@ -294,8 +300,6 @@ body {
   text-decoration: underline;
 }
 
-
-
 .comments__comment {
   padding: 10px;
   width: 100%; 
@@ -322,7 +326,7 @@ body {
   
 }
 
-.testi {
+.post-detail__container {
   display: flex;
   gap: 0.5rem;
   padding-bottom: 1rem;
@@ -351,13 +355,12 @@ body {
 	font: inherit;
 	cursor: pointer;
 	flex-direction: column;
-	height: 2.5rem;
-	border-radius: 999px;
+	height: 1.5rem;
 	background-color: var(--red);
 	font-weight: 500;
   width: 66px;
-  height: 36px;
   font-size: 15px;
+  border-radius: 999px;
 }
 
 .delete-container__btn:hover {
