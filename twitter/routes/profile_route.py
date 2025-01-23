@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from twitter.decorators import login_required
-from twitter.models import Post
+from twitter.views.post import get_profile_posts
 
 @login_required
 def show_profile(request, user_id):
     if request.method == "GET":
-        posts = Post.objects.filter(user_id=user_id).order_by("-created_at")
+        posts = get_profile_posts(user_id)
         return render(request, "profile.html", {"posts": posts})
 
