@@ -1,4 +1,4 @@
-from ..models import User
+from twitter.models import User
 from django.contrib import messages
 
 def login_user(request, username, password):

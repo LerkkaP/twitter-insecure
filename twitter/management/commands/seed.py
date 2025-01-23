@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from ...models import User, Post
+from twitter.models import User, Post
 
 class Command(BaseCommand):
     help = 'Seeds the database with two users'

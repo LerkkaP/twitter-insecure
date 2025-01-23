@@ -1,11 +1,11 @@
 from django.urls import path
 
-from .routes.index_route import index
-from .routes.feed_route import home
-from .routes.auth import logout
-from .routes.auth import login
-from .routes.post_route import create_post, post_detail, remove_post
-from .routes.profile_route import show_profile
+from twitter.routes.index_route import index
+from twitter.routes.feed_route import home
+from twitter.routes.auth import logout
+from twitter.routes.auth import login
+from twitter.routes.post_route import create_post, post_detail, remove_post
+from twitter.routes.profile_route import show_profile
 
 
 urlpatterns = [

@@ -1,4 +1,4 @@
-from ..models import Post, User, Comment
+from twitter.models import Post, User, Comment
 from django.contrib import messages
 from django.utils import timezone
 from django.db import connection

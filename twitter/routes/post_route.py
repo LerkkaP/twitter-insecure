@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from twitter.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
-from ..views.post import add_post, add_comment, delete_post
-from ..models import Post
+from twitter.views.post import add_post, add_comment, delete_post
+from twitter.models import Post
 
 @login_required
 @csrf_exempt

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from twitter.decorators import login_required
-from ..models import Post
+from twitter.models import Post
 
 @login_required
 def home(request):

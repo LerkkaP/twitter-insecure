@@ -8,10 +8,10 @@
 
         {% if post.user_id == request.session.user_id %}
         <div class="delete-container">
-					<form action="{% url 'remove_post' post.id %}" method="POST" style="display:inline;">
-							{% csrf_token %}
-							<button type="submit" class="delete-container__btn">Delete</button>
-					</form>
+			<form action="{% url 'remove_post' post.id %}" method="POST" style="display:inline;">
+				{% csrf_token %}
+				<button type="submit" class="delete-container__btn">Delete</button>
+			</form>
         </div>
         {% endif %}
         <a href="{% url 'post_detail' post.id %}">
@@ -31,7 +31,6 @@
                     <p>{{ post.text | safe | linebreaksbr }}</p>
                 </div>
             </div>
-            
         </a>
         {% endfor %}
         

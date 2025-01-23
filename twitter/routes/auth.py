@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from ..views.auth import login_user
+from twitter.views.auth import login_user
 
 def logout(request):
     del request.session["user_id"]
