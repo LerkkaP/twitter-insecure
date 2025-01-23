@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from twitter.decorators import login_required
-from twitter.models import Post
 from twitter.views.post import get_posts
 
 @login_required

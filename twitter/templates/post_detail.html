@@ -30,7 +30,14 @@
         <form method="POST" action="{% url 'post_detail' post.id%}">
             {% csrf_token %}
             <div class="add-comment__content">
-                <textarea id="post-textarea" class="create-post__text" cols="50" maxlength="280" placeholder="Post your reply" name="comment_text"></textarea>
+                <div class="add-comment__user">
+                    {% if request.session.username == "ricky" %}
+                        <img src="{% static 'images/ricky.png' %}" width="40px" height="40px" class="navigation__icon">
+                    {% else %}
+                        <img src="{% static 'images/bubbles.png' %}" width="40px" height="40px" class="navigation__icon">
+                    {% endif %}
+                    <textarea id="post-textarea" class="create-post__text" cols="50" maxlength="280" placeholder="Post your reply" name="comment_text"></textarea>
+                </div>
                 <button type="submit" class="create-post__button">Reply</button>
             </div>
         </form>
@@ -57,9 +64,7 @@
             </div>
             <div>
                 <div class="post__information">
-                    <a href="/profile/{{ comment.user.id}}">
                         <strong class="username">{{ comment.user.username }}</strong>
-                    </a>
                     <p class="date">{{ comment.created_at }}</p>
                 </div>
                 <p>{{ comment.comment_text | safe | linebreaksbr }}</p>
@@ -80,18 +85,6 @@
     textarea.addEventListener('input', adjustTextareaHeight);
 
     adjustTextareaHeight();
-
-            const usernames = document.querySelectorAll('.username');
-
-            usernames.forEach(username => {
-                    username.addEventListener('click', function(event) {
-                            event.preventDefault();
-
-                            const userId = this.getAttribute('data-user-id');
-
-                            window.location.href = `/profile/${userId}`;
-                    });
-            });
 </script>
 {% endblock %}
 
