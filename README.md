@@ -1,5 +1,3 @@
-**If the sign in modal is not opening, refresh your browser's cache**
-
 ## Installation guide
 
 1. Clone this repository to your local machine
@@ -20,11 +18,11 @@
    This creates the following accounts for testing purposes:
 
    ```bash
-   username: `ricky`
-   password: `SunnyvaleKing2025`
+   username: ricky
+   password: SunnyvaleKing2025
    ---------------------
-   username: `bubbles`
-   password: `KittyLord99`
+   username: bubbles
+   password: KittyLord99
    ```
    
 5. Run the application and you're ready to go:
