@@ -71,9 +71,6 @@
             <span class="popup__arrow"></span>
           </div>
         </div>
-
-
-        
       </nav>
 
       <main class="feed">
@@ -82,19 +79,7 @@
       </main>
     </div>
 
-    <script>
-function togglePopup(event) {
-  event.stopPropagation(); 
-  var popup = document.getElementById('logoutPopup');
-  popup.style.display = (popup.style.display === 'block') ? 'none' : 'block';
-}
+    <script src="{% static 'js/logoutPopup.js' %}"></script>
 
-window.onclick = function(event) {
-  var popup = document.getElementById('logoutPopup');
-  if (popup.style.display === 'block' && !event.target.closest('.navigation__user')) {
-    popup.style.display = 'none';
-  }
-};
-    </script>
   </body>
 </html>

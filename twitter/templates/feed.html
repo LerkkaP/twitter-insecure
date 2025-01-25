@@ -40,30 +40,7 @@
 			</a>
 			{% endfor %}
     </div>
+    <script src="{% static 'js/textArea.js' %}"></script>
+    <script src="{% static 'js/username.js' %}"></script>
 
-    <script>
-        const textarea = document.getElementById('post-textarea');
-
-        function adjustTextareaHeight() {
-            textarea.style.height = 'auto';
-
-            textarea.style.height = textarea.scrollHeight + 'px';
-        }
-
-        textarea.addEventListener('input', adjustTextareaHeight);
-
-        adjustTextareaHeight();
-
-				const usernames = document.querySelectorAll('.username');
-
-				usernames.forEach(username => {
-						username.addEventListener('click', function(event) {
-								event.preventDefault();
-
-								const userId = this.getAttribute('data-user-id');
-
-								window.location.href = `/profile/${userId}`;
-						});
-				});
-    </script>
 {% endblock %}
