@@ -33,7 +33,7 @@ def post_detail(request, post_id):
 @login_required
 def remove_post(request, post_id):
     if request.method == "POST":
-        delete_post(request, post_id)
+        delete_post(post_id)
         user_id = request.session.get("user_id")
         return redirect("profile", user_id=user_id)
     return render(request, "feed.html")
