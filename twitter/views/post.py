@@ -18,10 +18,10 @@ def add_post(request, text):
                 return None
             else:
                 created_at = timezone.now().strftime("%Y-%m-%d")
-                #query = f"INSERT INTO twitter_post (text, user_id, created_at) VALUES ('{text}', {user_instance.id}, '{created_at}')"
-                #cursor = connection.cursor()
-                #cursor.execute(query)
-                Post.objects.create(text=text, user=user_instance, created_at=created_at)
+                query = f"INSERT INTO twitter_post (text, user_id, created_at) VALUES ('{text}', {user_instance.id}, '{created_at}')"
+                cursor = connection.cursor()
+                cursor.execute(query)
+                # Post.objects.create(text=text, user=user_instance, created_at=created_at)
                 print("Post added successfully!")
 
 def add_comment(request, comment_text, post_id):
@@ -43,10 +43,6 @@ def add_comment(request, comment_text, post_id):
 def delete_post(post_id):
     post = Post.objects.get(id=post_id)
     post.delete()
-    # post_owner = post.user.id
-    # user_id = request.user.id
-    # if user_id == post_owner:
-        # post.delete()
 
 
 def get_posts():
