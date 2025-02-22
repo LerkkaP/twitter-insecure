@@ -41,8 +41,13 @@ def add_comment(request, comment_text, post_id):
     return True
 
 def delete_post(post_id):
-    post_to_delete = Post.objects.get(id=post_id)
-    post_to_delete.delete()
+    post = Post.objects.get(id=post_id)
+    post.delete()
+    # post_owner = post.user.id
+    # user_id = request.user.id
+    # if user_id == post_owner:
+        # post.delete()
+
 
 def get_posts():
     posts = Post.objects.all().order_by("-created_at")  
