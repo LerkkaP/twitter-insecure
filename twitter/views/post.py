@@ -15,7 +15,7 @@ def add_post(request, text):
             print("Max post length is 280 characters")
             return None
         else:
-            created_at = timezone.now().strftime("%Y-%m-%d")
+            created_at = timezone.now()
             query = f"INSERT INTO twitter_post (text, user_id, created_at) VALUES ('{text}', {user_instance.id}, '{created_at}')"
             cursor = connection.cursor()
             cursor.execute(query)
