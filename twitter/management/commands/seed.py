@@ -1,12 +1,13 @@
 from django.core.management.base import BaseCommand
-from twitter.models import User, Post
+from django.contrib.auth.models import User
+from twitter.models import Post
 
 class Command(BaseCommand):
     help = 'Seeds the database with two users'
 
     def handle(self, *args, **kwargs):
         if not User.objects.filter(username='ricky').exists():
-            ricky = User.objects.create(
+            ricky = User.objects.create_user(
                 username='ricky',
                 password='SunnyvaleKing2025',
             )
@@ -23,7 +24,7 @@ class Command(BaseCommand):
                 Post.objects.create(text=text, user=ricky)
 
         if not User.objects.filter(username='bubbles').exists():
-            bubbles = User.objects.create(
+            bubbles = User.objects.create_user(
                 username='bubbles',
                 password='KittyLord99',
             )

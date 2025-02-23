@@ -4,8 +4,8 @@
     {% load static %}
     <div class="create-post">
         <form method="POST" action="{% url 'create_post' %}">
-            <a href="/profile/{{ request.session.user_id }}">
-                {% if request.session.username == "ricky" %}
+            <a href="/profile/{{ request.user.user_id }}">
+                {% if request.user.username == "ricky" %}
                 <img src="{% static 'images/ricky.png' %}" width="40px" height="40px" class="navigation__icon">
                 {% else %}
                 <img src="{% static 'images/bubbles.png' %}" width="40px" height="40px" class="navigation__icon">

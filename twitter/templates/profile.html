@@ -6,7 +6,7 @@
     <div class="posts-feed">
         {% for post in posts %}
 
-        {% if post.user_id == request.session.user_id %}
+        {% if post.user.id == request.user.id %}
         <div class="delete-container">
 			<form action="{% url 'remove_post' post.id %}" method="POST" style="display:inline;">
 				{% csrf_token %}

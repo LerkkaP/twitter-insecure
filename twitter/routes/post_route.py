@@ -35,7 +35,7 @@ def post_detail(request, post_id):
 @csrf_exempt
 def remove_post(request, post_id):
     if request.method == "POST":
-        delete_post(post_id)
-        user_id = request.session.get("user_id")
+        delete_post(request, post_id)
+        user_id = request.user.id
         return redirect("profile", user_id=user_id)
     return render(request, "feed.html")
