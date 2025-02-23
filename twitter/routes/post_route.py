@@ -3,6 +3,7 @@ from twitter.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 from twitter.views.post import add_post, add_comment, delete_post, get_post_details
+from django.views.decorators.csrf import csrf_exempt
 
 @login_required
 @csrf_exempt
@@ -31,6 +32,7 @@ def post_detail(request, post_id):
         return redirect("post_detail", post_id=post.id)
 
 @login_required
+@csrf_exempt
 def remove_post(request, post_id):
     if request.method == "POST":
         delete_post(post_id)

@@ -6,7 +6,7 @@ from twitter.routes.auth import logout
 from twitter.routes.auth import login
 from twitter.routes.post_route import create_post, post_detail, remove_post
 from twitter.routes.profile_route import show_profile
-
+from twitter.routes.giveaway_route import giveaway
 
 urlpatterns = [
     path("", index, name="index"),
@@ -17,4 +17,5 @@ urlpatterns = [
     path("post/<int:post_id>/", post_detail, name="post_detail"),  
     path("profile/<int:user_id>/", show_profile, name="profile"),
     path("post/<int:post_id>/remove/", remove_post, name="remove_post"),
+    path("giveaway", giveaway, name="giveaway")
     ]
