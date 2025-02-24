@@ -9,7 +9,7 @@
         {% if post.user.id == request.user.id %}
         <div class="delete-container">
 			<form action="{% url 'remove_post' post.id %}" method="POST" style="display:inline;">
-				{% csrf_token %}
+				<!--{% csrf_token %}-->
 				<button type="submit" class="delete-container__btn">Delete</button>
 			</form>
         </div>
