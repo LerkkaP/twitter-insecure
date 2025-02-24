@@ -1,6 +1,6 @@
 ## Introduction
 
-This repository contains the insecure version of the application developed for the Cyber Security Base Project 1. The application intentionally includes five vulnerabilities from the OWASP Top 10 (2017) list to demonstrate common security flaws in web applications.  The secure version with the fixed flaws can be found [here](https://github.com/LerkkaP/twitter-secure).
+This repository contains the application developed for the Cyber Security Base Project 1. The application intentionally includes five vulnerabilities from the OWASP Top 10 (2017) list to demonstrate common security flaws in web applications.
 
 ## Requirements
 
