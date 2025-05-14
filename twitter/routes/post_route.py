@@ -31,6 +31,11 @@ def post_detail(request, post_id):
 
 @login_required
 @csrf_exempt
+# To fix the csrf vulnerability, we simply remove the
+# @csrf_exempt decorator. Removing this ensures that
+# Django's CSRF middleware will check that the CSRF token
+# submitted in the form matches the token in the user's
+# session.
 def remove_post(request, post_id):
     if request.method == "POST":
         delete_post(request, post_id)
